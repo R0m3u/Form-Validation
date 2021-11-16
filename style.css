@@ -8,11 +8,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 
-
-:root {
-    --link-color: #eeeeee;
-}
-
 body {
 
     background: #ff7978;
@@ -46,6 +41,7 @@ body {
     padding: 0 30px;
     line-height: 32px;
     color: #fce5e4;
+    text-align: center;
 }
 
 .ad {
@@ -53,7 +49,7 @@ body {
     justify-content: center;
     align-items: center;
     background: #5d54a3;
-    width: 80%;
+    width: 90%;
     height: 6rem;
     margin: 40px auto;
     border-radius: 10px;    
@@ -62,7 +58,7 @@ body {
 
 .ad a {
     text-decoration: none;
-    color: var(--link-color);
+    color: #eeeeee;
     margin: 0 auto;
     text-align: center;
 }
@@ -76,40 +72,53 @@ body {
     flex-direction: column;
     align-items: center;
     background: white;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     border-radius: 10px;
-    padding-top: 30px;
     box-shadow: 0px 8px 0px rgba(0, 0, 0, .2);
     margin-bottom: 6rem;
-    position: relative;
-    padding: 0 auto; 
+    padding: 30px 1em 0 1em; 
 }
 
 .form input {
     display: inline-block;
     height: 3.5rem;
-    width: 90%;
-    margin: 0 0px 20px 15px;
+    width: 100%;
+    margin-bottom: 20px ;
     border: 1px solid #eeeeee;
     border-radius: 5px;
     outline: none;
     padding: 0 1em;
     font-weight: 300;
-    /* color: #69686d; */
     font-size: 1.2em;
-    color: rgb(192, 191, 191);
-
-    
+    color: rgb(192, 191, 191);   
 }
 
+
+
 input::placeholder {
-    /* color: #69686d; */
     color: rgb(211, 209, 209);
     font-weight: 300;
 }
 
-.form a {
+.form input.wrong {
+    border: 1px solid red;
+    transition: .8s;
+}
+
+.form input.correct {
+    border: 1px solid #37cc8a;
+    transition: .8s;
+}
+
+input.password {
+    margin-bottom: 0;
+    padding: 0 2.5em 0 1em;
+
+}
+
+
+.form button {
     color: white;
     background: #37cc8a;
     height: 3em;
@@ -123,6 +132,10 @@ input::placeholder {
     border-radius: 5px;
     box-shadow: 0px 3px 0px #3aa97e;
     transition: 1s;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto;
 }
 
 .form a:hover {
@@ -132,201 +145,62 @@ input::placeholder {
 }
 
 
-.form span {
+.form .terms {
     text-align: center;
     color: #c5c4cb;
     font-size: 1.1em;
     font-weight: 700;
-    padding: 10px 20px 20px 20px;
+    margin: 20px auto;
     cursor: pointer;
+    line-height: 1.5rem;
 }
 
 .form-container b {
     color: #dc8283;
 }
 
-.overlay {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    background: rgba(0, 0, 0, .3);
 
+.msg > img {
+    margin-right: 6px;
 }
 
-.none {
-    display: none;
+.password-strength {
+    display: block;
+    /* width: 100%; */
+    height: 1em;
+    /* color: #ff7978; */
+    border-radius: 4px;
+    margin: 0.7em 0;
+    transition: all 0.8s ease-in;
 }
 
-.popup {
-    background: white;
-    border-radius: 20px;
-    height: 90%;
-    width: 90%;
-    position: fixed;
-    top: 5%;
-    bottom: 5%;
-    padding: 5%;
-    overflow-y: auto;
-    margin: 0 5%;
-}
-.popup h1 {
-    text-align: center;
-    margin-bottom: 30px;
+.label {
+    color: #f8d71d;
 }
 
-
-
-.popup h2 {
-    margin-bottom: 20px;
-}
-
-.popup p {
-    margin: 20px 0;
-}
-
-.popup ul li {
-    margin-bottom: 10px;
-}
-
-.popup::-webkit-scrollbar{
-    width: 10px;
-    border-radius:20px ;
-}
-
-
-.popup::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, .1);
-    border-radius: 20px;
-    width: 30px;
-}
-
-#accept {
-    margin-right: 10px;
-}
-
-.close-popup {
-    background: black;
-    color: white;
-    height: 1.5em;
-    width: 1.5em;
-    position: sticky;
-    top: -10px;
-    float: right;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.showHide {
+    width: 1.6rem;
+    height: 1.6rem;
+    position: absolute;
+    right: 3em;
     cursor: pointer;
-    margin-top: -3em;
-}
-
-.close-btn {
-    height: 2px;
-    width: 80%;
-    left: 3px;
-    background:transparent;
-    position: absolute;
-}
-
-.close-btn::before {
-    content: "";
-    height: 2px;
-    width: 90%;
-    background: white;
-    position: absolute;
-    top: 0;
-    transform: rotate(-45deg);
-}
-.close-btn::after{
-    content: "";
-    height: 2px;
-    width: 90%;
-    background: white;
-    position: absolute;
-    top: 0;
-    transform: rotate(45deg);
-}
-
-.charging-popup {
-    height: 100vh;
-    width: 100%;
-    background: #5d54a3;
-    position: fixed;
-    top: 0; 
-    animation: animateBg 10s linear infinite;
-
+    margin-top: -40px;
     
 }
 
-@keyframes animateBg {
-    0% {
-        filter: hue-rotate(0);
-    }
-
-    100% {
-        filter: hue-rotate(360px);
-    }
-
+.hide {
+    background: url("./imgs/hidepass.svg") no-repeat;
 }
 
-/* 
-.charging-symbol {
-    
-} */
-
-.loading {
-    position: relative;
-    width: 120px;
-    height: 120px ;
-}
-
-.loading span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: rotate(calc(18deg * var(--i)));
-}
-
-.loading span::before {
-    content: " ";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 15px;
-    height: 15px;
-    background:  #ff7978;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgb(184, 95, 95),
-                0 0 20px rgb(184, 95, 95),
-                0 0 40px rgb(184, 95, 95),
-                0 0 60px rgb(184, 95, 95),
-                0 0 60px rgb(184, 95, 95),
-                0 0 100px rgb(184, 95, 95);
-    animation: animate 1s linear infinite;
-    animation-delay: calc(0.1s * var(--i));
-}
-
-@keyframes animate {
-    0% {
-        transform: scale(1);
-    }
-
-    80%, 100% {
-        transform: scale(0);
-    }
+.show {
+    background: url("./imgs/showpass.svg") no-repeat;
 }
 
 @media screen and (min-width: 640px) {
-    .form input {
-        width: 90%;
-    }
-    
-    
-    .form a {
-        width: 90%;
+    .showHide {
+        right: 3.6em;
+        margin-top: -40px;
+        
     }
 
 }
@@ -389,7 +263,8 @@ input::placeholder {
         height: 3.5rem;
         box-shadow: 0px 8px 0px rgba(0, 0, 0, .2);
         margin: 30px auto;
-        animation: steps(50) 1s visibility;        position: relative;
+        animation: steps(50) 1s visibility;        
+        position: relative;
     }
 
     @keyframes rightToOrigin {
@@ -418,20 +293,49 @@ input::placeholder {
     }
 
     .form input {
-        width: 95%;
+        width: 100%;
         height: 3rem;
     }
     
     
-    .form a {
-        width: 95%;
+    .form button {
+        width: 100%;
         height: 3em;
     }
 
-    .form span {
+    .form .terms {
         font-size: .9em;
     }
 
-    
+    .showHide {
+        right: 3.6em;
+        margin-top: -35px;
+        
+    }
+
+  
 }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .forms input {
+        width: 100%;
+    }
+
+    .showHide {
+        right: 4em;
+        margin-top: -40px;
+        
+    }
+   
+}
+
+#text-input {
+    padding: .8em;
+    outline: none;
+}
