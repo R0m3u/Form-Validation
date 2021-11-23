@@ -2,6 +2,7 @@
 let _name = document.querySelectorAll(".name");
 let email = document.querySelector(".email");
 let password = document.querySelector(".password");
+let passTip = document.querySelector(".password-tip");
 
 //eventos
 for(var i = 0; i < _name.length; i++) {
@@ -25,7 +26,7 @@ for(var i = 0; i < _name.length; i++) {
 }
 
 email.addEventListener("keyup", checkEmail);
-password.addEventListener("keyup", passwordStrength);
+password.addEventListener("keyup", passwordInput);
 
 //funcoes
 function checkEmail() {
@@ -53,8 +54,35 @@ function checkEmail() {
   }
 }
 
-function passwordStrength() {
-  //code here
+function passwordInput() {
+  let passRegex = /([\w+][\W]+)/;
+
+  if(password.value === "") {
+    password.classList.add("wrong");
+    password.classList.remove("correct");
+
+    passTip.textContent = "A senha deve conter uma letra maiuscula, uma letra minuscula, um numero e um caractere especial";
+
+  }
+
+  else if(passRegex.test(password.value) == true){
+    password.classList.add("correct");
+    password.classList.remove("wrong");
+
+    passTip.textContent = "";
+  }
+  
+  else if(passRegex.test(password.value) == false){
+    let passTip = document.querySelector(".password-tip")
+
+    password.classList.add("wrong");
+    password.classList.remove("correct");
+
+    passTip.textContent = "A senha deve conter uma letra maiuscula, uma letra minuscula, um numero e um caractere especial";
+    
+
+
+  }
 
 }
 
